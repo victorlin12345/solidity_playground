@@ -7,3 +7,6 @@
     - https://www.youtube.com/watch?v=szv2zJcy_Xs
     - https://www.youtube.com/watch?v=szv2zJcy_Xs
     - https://www.youtube.com/watch?v=CnHFNadyla0
+3. 看補充影片：Keccak256 Hash Function、Function Selector (最好於週四討論課前先行回答) 並嘗試描述影片中學習到的內容與延伸
+    - https://www.youtube.com/watch?v=wCD3fOlsGc4
+    - https://www.youtube.com/watch?v=Mn4e4w8h6n8
