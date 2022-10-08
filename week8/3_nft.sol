@@ -35,13 +35,13 @@ contract AppWorks is ERC721, Ownable {
   function mint(uint256 _mintAmount) public payable {
     //Please make sure you check the following things:
     // 1. Current state is available for Public Mint
-    require(mintActive,"unavilable mint");
+    require(mintActive, "unavilable mint");
     // 2. Check how many NFTs are available to be minted (Set mint per user limit to 10 and owner limit to 20 - Week 8)
     require(_mintAmount + totalSupply() <= maxSupply, "run out of supply");
     if (msg.sender == owner()) {
         require(addressMintedAmount[msg.sender] + _mintAmount <= 20, "Owner limit to 20");
     } else {
-        require(addressMintedAmount[msg.sender]+_mintAmount <= 10, "Per user limit to 10");
+        require(addressMintedAmount[msg.sender] + _mintAmount <= 10, "Per user limit to 10");
     }
     // 3. Check user has sufficient funds
     require(msg.value == price * _mintAmount, "insufficient funds");
@@ -50,7 +50,7 @@ contract AppWorks is ERC721, Ownable {
     _nextTokenId._value = startTokenID + _mintAmount;
     addressMintedAmount[msg.sender] += _mintAmount;
      for (uint256 i = startTokenID; i < _nextTokenId.current(); i++) {
-            _safeMint(msg.sender, i);               
+            _safeMint(msg.sender, i); // 將新的一枚 token mint 到 to 的帳戶中。            
         }
   }
   
@@ -60,7 +60,7 @@ contract AppWorks is ERC721, Ownable {
   }
 
   // Implement withdrawBalance() Function to withdraw funds from the contract - week 8
-  function withdrawBalance() public onlyOwner {
+  function withdrawBalance() external onlyOwner {
       require(address(this).balance != 0, "balance is 0");
       (bool success, ) = payable(msg.sender).call{value: address(this).balance}("");
       if (!success) {
